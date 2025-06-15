@@ -12,7 +12,7 @@ export const UnixTimeTable = memo(function UnixTimeTable({ unixTime }: UnixTimeT
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTime(new Date());
-    }, 1000);
+    }, 97);
 
     return () => clearInterval(interval);
   }, []);
