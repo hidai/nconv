@@ -19,6 +19,7 @@
   text-align: center;
   background-color: inherit;
   color: inherit;
+  box-sizing: border-box;
 }
 
 .number-input:focus {
@@ -118,6 +119,22 @@
   grid-template-columns: 1fr auto auto 1fr;
   gap: 8px;
   align-items: center;
+}
+
+@media (max-width: 640px) {
+  .unix-time-values {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .unix-separator {
+    display: none;
+  }
+
+  .unix-current-label {
+    margin-top: 4px;
+  }
 }
 
 .unix-input-value {
@@ -276,13 +293,18 @@
   }
 
   .result-label {
-    min-width: 100px;
+    min-width: 80px;
     font-size: 13px;
   }
 
   .result-value {
     font-size: 14px;
     font-weight: 700;
+  }
+
+  .unix-input-value,
+  .unix-current-value {
+    font-size: 13px;
   }
 }
 
