@@ -1,8 +1,8 @@
 import { memo } from 'react';
-import { AllResults } from '../types';
+import type { AllResults } from '../types';
 import { BasicConversions } from './BasicConversions';
-import { UnixTimeTable } from './UnixTimeTable';
 import { DurationTable } from './DurationTable';
+import { UnixTimeTable } from './UnixTimeTable';
 
 interface ResultsSectionProps {
   results: AllResults | null;

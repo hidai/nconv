@@ -55,11 +55,11 @@
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  
+
   .App {
     padding: 16px;
   }
-  
+
   .number-input {
     font-size: 16px;
     padding: 12px;
@@ -97,7 +97,7 @@
 }
 
 .result-value {
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   text-align: right;
   word-break: break-all;
 }
@@ -121,7 +121,7 @@
 }
 
 .time-table td {
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   font-size: 12px;
 }
 
@@ -130,16 +130,16 @@
     background-color: rgba(0, 0, 0, 0.05);
     border-color: #ddd;
   }
-  
+
   .result-row {
     border-bottom-color: rgba(0, 0, 0, 0.1);
   }
-  
+
   .time-table th,
   .time-table td {
     border-color: rgba(0, 0, 0, 0.2);
   }
-  
+
   .time-table th {
     background-color: rgba(100, 108, 255, 0.1);
   }
@@ -149,26 +149,26 @@
   .time-table {
     font-size: 11px;
   }
-  
+
   .time-table th,
   .time-table td {
     padding: 6px 8px;
   }
-  
+
   .result-group {
     padding: 12px;
   }
-  
+
   .result-group h3 {
     font-size: 16px;
     margin-bottom: 12px;
   }
-  
+
   .result-label {
     min-width: 100px;
     font-size: 14px;
   }
-  
+
   .result-value {
     font-size: 12px;
   }

@@ -1,5 +1,17 @@
-import { ParsedNumber, ConversionResult, UnixTimeResult, DurationResult, AllResults } from '../types';
-import { formatWithSeparators, formatSI, formatIEC, formatDateTime, formatDuration } from './formatter';
+import type {
+  AllResults,
+  ConversionResult,
+  DurationResult,
+  ParsedNumber,
+  UnixTimeResult,
+} from '../types';
+import {
+  formatDateTime,
+  formatDuration,
+  formatIEC,
+  formatSI,
+  formatWithSeparators,
+} from './formatter';
 
 export function convertToBasicFormats(parsed: ParsedNumber): ConversionResult {
   if (!parsed.isValid) {
@@ -8,7 +20,7 @@ export function convertToBasicFormats(parsed: ParsedNumber): ConversionResult {
       decimal: 'Invalid',
       hex: 'Invalid',
       si: 'Invalid',
-      iec: 'Invalid'
+      iec: 'Invalid',
     };
   }
 
@@ -19,7 +31,7 @@ export function convertToBasicFormats(parsed: ParsedNumber): ConversionResult {
     decimal: formatWithSeparators(value),
     hex: `0x${value.toString(16).toUpperCase()}`,
     si: formatSI(value),
-    iec: formatIEC(value)
+    iec: formatIEC(value),
   };
 }
 
@@ -30,42 +42,42 @@ export function convertToUnixTime(parsed: ParsedNumber): UnixTimeResult {
       seconds: invalid,
       milliseconds: invalid,
       microseconds: invalid,
-      nanoseconds: invalid
+      nanoseconds: invalid,
     };
   }
 
   const { value } = parsed;
-  
+
   try {
     const numValue = Number(value);
-    
+
     if (numValue > Number.MAX_SAFE_INTEGER || numValue < Number.MIN_SAFE_INTEGER) {
       const invalid = { local: 'Out of range', utc: 'Out of range' };
       return {
         seconds: invalid,
         milliseconds: invalid,
         microseconds: invalid,
-        nanoseconds: invalid
+        nanoseconds: invalid,
       };
     }
 
     return {
       seconds: {
         local: formatDateTime(numValue * 1000, false),
-        utc: formatDateTime(numValue * 1000, true)
+        utc: formatDateTime(numValue * 1000, true),
       },
       milliseconds: {
         local: formatDateTime(numValue, false),
-        utc: formatDateTime(numValue, true)
+        utc: formatDateTime(numValue, true),
       },
       microseconds: {
         local: formatDateTime(numValue / 1000, false),
-        utc: formatDateTime(numValue / 1000, true)
+        utc: formatDateTime(numValue / 1000, true),
       },
       nanoseconds: {
         local: formatDateTime(numValue / 1000000, false),
-        utc: formatDateTime(numValue / 1000000, true)
-      }
+        utc: formatDateTime(numValue / 1000000, true),
+      },
     };
   } catch (error) {
     const invalid = { local: 'Error', utc: 'Error' };
@@ -73,7 +85,7 @@ export function convertToUnixTime(parsed: ParsedNumber): UnixTimeResult {
       seconds: invalid,
       milliseconds: invalid,
       microseconds: invalid,
-      nanoseconds: invalid
+      nanoseconds: invalid,
     };
   }
 }
@@ -84,21 +96,21 @@ export function convertToDuration(parsed: ParsedNumber): DurationResult {
       seconds: 'Invalid',
       milliseconds: 'Invalid',
       microseconds: 'Invalid',
-      nanoseconds: 'Invalid'
+      nanoseconds: 'Invalid',
     };
   }
 
   const { value } = parsed;
-  
+
   try {
     const numValue = Number(value);
-    
+
     if (numValue > Number.MAX_SAFE_INTEGER || numValue < Number.MIN_SAFE_INTEGER) {
       return {
         seconds: 'Out of range',
         milliseconds: 'Out of range',
         microseconds: 'Out of range',
-        nanoseconds: 'Out of range'
+        nanoseconds: 'Out of range',
       };
     }
 
@@ -106,14 +118,14 @@ export function convertToDuration(parsed: ParsedNumber): DurationResult {
       seconds: formatDuration(numValue),
       milliseconds: formatDuration(numValue / 1000),
       microseconds: formatDuration(numValue / 1000000),
-      nanoseconds: formatDuration(numValue / 1000000000)
+      nanoseconds: formatDuration(numValue / 1000000000),
     };
   } catch (error) {
     return {
       seconds: 'Error',
       milliseconds: 'Error',
       microseconds: 'Error',
-      nanoseconds: 'Error'
+      nanoseconds: 'Error',
     };
   }
 }
@@ -123,6 +135,6 @@ export function convertAll(parsed: ParsedNumber): AllResults {
     parsed,
     conversions: convertToBasicFormats(parsed),
     unixTime: convertToUnixTime(parsed),
-    duration: convertToDuration(parsed)
+    duration: convertToDuration(parsed),
   };
 }

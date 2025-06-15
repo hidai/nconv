@@ -18,7 +18,7 @@
 - **フロントエンド**: React 18 + TypeScript
 - **ビルドツール**: Vite
 - **スタイリング**: CSS3 (カスタムCSS)
-- **リンター**: ESLint + TypeScript ESLint
+- **リンター・フォーマッター**: Biome (高速なRust製ツール)
 
 ## 開発環境のセットアップ
 
@@ -43,6 +43,12 @@ npm run preview
 
 # リンター実行
 npm run lint
+
+# フォーマッター実行
+npm run format
+
+# リンター + フォーマッター実行
+npm run check
 ```
 
 ## プロジェクト構造
@@ -72,7 +78,7 @@ nconv/
 
 ### コーディング規約
 - TypeScriptの厳格モード使用
-- ESLintルールに準拠
+- Biomeルールに準拠（Linter + Formatter統一）
 - Reactのフックを適切に使用
 - パフォーマンスを考慮したリアルタイム更新
 

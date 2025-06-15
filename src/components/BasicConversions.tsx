@@ -1,11 +1,13 @@
 import { memo } from 'react';
-import { ConversionResult } from '../types';
+import type { ConversionResult } from '../types';
 
 interface BasicConversionsProps {
   conversions: ConversionResult;
 }
 
-export const BasicConversions = memo(function BasicConversions({ conversions }: BasicConversionsProps) {
+export const BasicConversions = memo(function BasicConversions({
+  conversions,
+}: BasicConversionsProps) {
   return (
     <div className="result-group">
       <h3>Basic Conversions</h3>

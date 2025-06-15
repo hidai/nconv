@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { DurationResult } from '../types';
+import type { DurationResult } from '../types';
 
 interface DurationTableProps {
   duration: DurationResult;

@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { UnixTimeResult } from '../types';
+import type { UnixTimeResult } from '../types';
 
 interface UnixTimeTableProps {
   unixTime: UnixTimeResult;

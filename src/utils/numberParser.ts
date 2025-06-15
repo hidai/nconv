@@ -1,15 +1,15 @@
-import { ParsedNumber } from '../types';
+import type { ParsedNumber } from '../types';
 
 export function parseNumber(input: string): ParsedNumber {
   const trimmed = input.trim();
-  
+
   if (!trimmed) {
     return {
       value: 0n,
       originalInput: input,
       detectedBase: 10,
       isValid: false,
-      error: 'Empty input'
+      error: 'Empty input',
     };
   }
 
@@ -35,7 +35,7 @@ export function parseNumber(input: string): ParsedNumber {
         originalInput: input,
         detectedBase: 10,
         isValid: false,
-        error: 'Invalid number format'
+        error: 'Invalid number format',
       };
     }
 
@@ -43,7 +43,7 @@ export function parseNumber(input: string): ParsedNumber {
       value,
       originalInput: input,
       detectedBase,
-      isValid: true
+      isValid: true,
     };
   } catch (error) {
     return {
@@ -51,7 +51,7 @@ export function parseNumber(input: string): ParsedNumber {
       originalInput: input,
       detectedBase: 10,
       isValid: false,
-      error: error instanceof Error ? error.message : 'Parse error'
+      error: error instanceof Error ? error.message : 'Parse error',
     };
   }
 }

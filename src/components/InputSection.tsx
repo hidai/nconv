@@ -6,7 +6,11 @@ interface InputSectionProps {
   error?: string;
 }
 
-export const InputSection = memo(function InputSection({ value, onChange, error }: InputSectionProps) {
+export const InputSection = memo(function InputSection({
+  value,
+  onChange,
+  error,
+}: InputSectionProps) {
   return (
     <div className="input-section">
       <input

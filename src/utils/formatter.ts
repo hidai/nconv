@@ -24,67 +24,65 @@ export function formatWithSeparators(value: bigint): string {
   const str = value.toString();
   const isNegative = str.startsWith('-');
   const digits = isNegative ? str.slice(1) : str;
-  
+
   const parts = [];
   for (let i = digits.length; i > 0; i -= 3) {
     const start = Math.max(0, i - 3);
     parts.unshift(digits.slice(start, i));
   }
-  
+
   return (isNegative ? '-' : '') + parts.join(',');
 }
 
 export function formatSI(value: bigint): string {
   const absValue = value < 0n ? -value : value;
   const sign = value < 0n ? '-' : '';
-  
+
   for (const unit of SI_UNITS) {
     if (absValue >= unit.value) {
       const quotient = absValue / unit.value;
       const remainder = absValue % unit.value;
-      
+
       if (remainder === 0n) {
         return `${sign}${quotient}${unit.suffix}`;
-      } else {
-        const decimal = Number(remainder) / Number(unit.value);
-        const formatted = (Number(quotient) + decimal).toFixed(2);
-        return `${sign}${formatted}${unit.suffix}`;
       }
+      const decimal = Number(remainder) / Number(unit.value);
+      const formatted = (Number(quotient) + decimal).toFixed(2);
+      return `${sign}${formatted}${unit.suffix}`;
     }
   }
-  
+
   return formatWithSeparators(value);
 }
 
 export function formatIEC(value: bigint): string {
   const absValue = value < 0n ? -value : value;
   const sign = value < 0n ? '-' : '';
-  
+
   for (const unit of IEC_UNITS) {
     if (absValue >= unit.value) {
       const quotient = absValue / unit.value;
       const remainder = absValue % unit.value;
-      
+
       if (remainder === 0n) {
         return `${sign}${quotient}${unit.suffix}`;
-      } else {
-        const decimal = Number(remainder) / Number(unit.value);
-        const formatted = (Number(quotient) + decimal).toFixed(2);
-        return `${sign}${formatted}${unit.suffix}`;
       }
+      const decimal = Number(remainder) / Number(unit.value);
+      const formatted = (Number(quotient) + decimal).toFixed(2);
+      return `${sign}${formatted}${unit.suffix}`;
     }
   }
-  
+
   return formatWithSeparators(value);
 }
 
-export function formatDateTime(timestamp: number, isUTC: boolean = false): string {
+export function formatDateTime(timestamp: number, isUTC = false): string {
   const date = new Date(timestamp);
-  
-  if (isNaN(date.getTime())) {
+
+  if (Number.isNaN(date.getTime())) {
     return 'Invalid Date';
   }
-  
+
   const formatter = new Intl.DateTimeFormat('ja-JP', {
     year: 'numeric',
     month: '2-digit',
@@ -93,21 +91,21 @@ export function formatDateTime(timestamp: number, isUTC: boolean = false): strin
     minute: '2-digit',
     second: '2-digit',
     timeZone: isUTC ? 'UTC' : undefined,
-    hour12: false
+    hour12: false,
   });
-  
+
   return formatter.format(date);
 }
 
 export function formatDuration(totalSeconds: number): string {
   if (totalSeconds < 0) {
-    return '-' + formatDuration(-totalSeconds);
+    return `-${formatDuration(-totalSeconds)}`;
   }
-  
+
   const seconds = Math.floor(totalSeconds) % 60;
   const minutes = Math.floor(totalSeconds / 60) % 60;
   const hours = Math.floor(totalSeconds / 3600);
-  
+
   if (hours >= 24) {
     const days = Math.floor(hours / 24);
     const remainingHours = hours % 24;
@@ -115,6 +113,6 @@ export function formatDuration(totalSeconds: number): string {
     date.setUTCDate(date.getUTCDate() + days);
     return `${date.getUTCFullYear()}/${String(date.getUTCMonth() + 1).padStart(2, '0')}/${String(date.getUTCDate()).padStart(2, '0')} ${String(remainingHours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
   }
-  
+
   return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }

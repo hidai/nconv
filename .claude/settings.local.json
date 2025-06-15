@@ -8,7 +8,12 @@
       "Bash(npm run lint)",
       "Bash(npm run build:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm install:*)",
+      "Bash(rm:*)",
+      "Bash(npm run check:*)",
+      "Bash(npm run format:*)"
     ],
     "deny": []
   }
