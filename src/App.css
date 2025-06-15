@@ -109,6 +109,43 @@
   color: #ffffff;
 }
 
+.unix-time-row .result-value {
+  display: none;
+}
+
+.unix-time-values {
+  display: grid;
+  grid-template-columns: 1fr auto auto 1fr;
+  gap: 8px;
+  align-items: center;
+}
+
+.unix-input-value {
+  text-align: right;
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.unix-separator {
+  opacity: 0.5;
+}
+
+.unix-current-label {
+  opacity: 0.7;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.unix-current-value {
+  text-align: left;
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+  font-size: 16px;
+  color: #ffffff;
+}
+
 .time-table {
   width: 100%;
   border-collapse: collapse;
@@ -166,6 +203,14 @@
     color: #000000;
   }
 
+  .unix-input-value {
+    color: #000000;
+  }
+
+  .unix-current-value {
+    color: #000000;
+  }
+
   .time-table td {
     color: #000000;
   }
@@ -186,12 +231,12 @@
 
 @media (max-width: 480px) {
   .time-table {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .time-table th,
   .time-table td {
-    padding: 6px 8px;
+    padding: 4px 6px;
   }
 
   .result-group {
