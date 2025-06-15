@@ -1,5 +1,6 @@
 import { memo, useState, useEffect } from 'react';
 import type { UnixTimeResult } from '../types';
+import { CopyableValue } from './CopyableValue';
 
 interface UnixTimeTableProps {
   unixTime: UnixTimeResult;
@@ -38,37 +39,37 @@ export const UnixTimeTable = memo(function UnixTimeTable({ unixTime }: UnixTimeT
       <div className="result-row unix-time-row">
         <span className="result-label">seconds:</span>
         <div className="unix-time-values">
-          <span className="unix-input-value">{unixTime.seconds.local}</span>
+          <CopyableValue value={unixTime.seconds.local} className="unix-input-value" />
           <span className="unix-separator">|</span>
           <span className="unix-current-label">Now:</span>
-          <span className="unix-current-value">{formatCurrentTime('seconds')}</span>
+          <CopyableValue value={formatCurrentTime('seconds')} className="unix-current-value" />
         </div>
       </div>
       <div className="result-row unix-time-row">
         <span className="result-label">milliseconds:</span>
         <div className="unix-time-values">
-          <span className="unix-input-value">{unixTime.milliseconds.local}</span>
+          <CopyableValue value={unixTime.milliseconds.local} className="unix-input-value" />
           <span className="unix-separator">|</span>
           <span className="unix-current-label">Now:</span>
-          <span className="unix-current-value">{formatCurrentTime('milliseconds')}</span>
+          <CopyableValue value={formatCurrentTime('milliseconds')} className="unix-current-value" />
         </div>
       </div>
       <div className="result-row unix-time-row">
         <span className="result-label">microseconds:</span>
         <div className="unix-time-values">
-          <span className="unix-input-value">{unixTime.microseconds.local}</span>
+          <CopyableValue value={unixTime.microseconds.local} className="unix-input-value" />
           <span className="unix-separator">|</span>
           <span className="unix-current-label">Now:</span>
-          <span className="unix-current-value">{formatCurrentTime('microseconds')}</span>
+          <CopyableValue value={formatCurrentTime('microseconds')} className="unix-current-value" />
         </div>
       </div>
       <div className="result-row unix-time-row">
         <span className="result-label">nanoseconds:</span>
         <div className="unix-time-values">
-          <span className="unix-input-value">{unixTime.nanoseconds.local}</span>
+          <CopyableValue value={unixTime.nanoseconds.local} className="unix-input-value" />
           <span className="unix-separator">|</span>
           <span className="unix-current-label">Now:</span>
-          <span className="unix-current-value">{formatCurrentTime('nanoseconds')}</span>
+          <CopyableValue value={formatCurrentTime('nanoseconds')} className="unix-current-value" />
         </div>
       </div>
     </div>

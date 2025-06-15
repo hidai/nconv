@@ -146,6 +146,28 @@
   color: #ffffff;
 }
 
+.copyable-value {
+  cursor: pointer;
+  position: relative;
+}
+
+.copyable-value:hover {
+  opacity: 0.8;
+}
+
+.copy-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 1000;
+  animation: toast-slide-in 0.3s ease-out;
+}
+
 .time-table {
   width: 100%;
   border-collapse: collapse;
@@ -211,6 +233,11 @@
     color: #000000;
   }
 
+  .copy-toast {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+  }
+
   .time-table td {
     color: #000000;
   }
@@ -256,5 +283,16 @@
   .result-value {
     font-size: 14px;
     font-weight: 700;
+  }
+}
+
+@keyframes toast-slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
