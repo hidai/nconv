@@ -129,7 +129,8 @@ interface DurationResult {
 ### パフォーマンス最適化
 - useCallback, useMemoの適切な使用
 - 不要な再レンダリングの防止
-- debounceによる計算頻度の制御
+- 適応的debounce処理（短い入力は即座に、長い入力は100ms遅延）
+- Reactコンポーネントのメモ化
 
 ### エラーハンドリング
 - 無効な入力の検出
