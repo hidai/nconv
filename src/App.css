@@ -1,5 +1,4 @@
 .App {
-  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -41,7 +40,7 @@
 
 .results-section {
   margin-top: 40px;
-  text-align: left;
+  text-align: center;
 }
 
 .results-grid {
