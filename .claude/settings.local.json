@@ -15,7 +15,8 @@
       "Bash(npm run check:*)",
       "Bash(npm run format:*)",
       "Bash(find:*)",
-      "Bash(npm audit:*)"
+      "Bash(npm audit:*)",
+      "Bash(npm run typecheck:*)"
     ],
     "deny": []
   }

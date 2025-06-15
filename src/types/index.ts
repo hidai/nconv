@@ -15,10 +15,10 @@ export interface ConversionResult {
 }
 
 export interface UnixTimeResult {
-  seconds: { local: string; utc: string };
-  milliseconds: { local: string; utc: string };
-  microseconds: { local: string; utc: string };
-  nanoseconds: { local: string; utc: string };
+  seconds: { local: string; utc: string; isValid: boolean };
+  milliseconds: { local: string; utc: string; isValid: boolean };
+  microseconds: { local: string; utc: string; isValid: boolean };
+  nanoseconds: { local: string; utc: string; isValid: boolean };
 }
 
 export interface DurationResult {

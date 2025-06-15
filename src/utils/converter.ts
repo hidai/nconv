@@ -11,6 +11,7 @@ import {
   formatIEC,
   formatSI,
   formatWithSeparators,
+  isTimestampValid,
 } from './formatter';
 
 export function convertToBasicFormats(parsed: ParsedNumber): ConversionResult {
@@ -37,7 +38,7 @@ export function convertToBasicFormats(parsed: ParsedNumber): ConversionResult {
 
 export function convertToUnixTime(parsed: ParsedNumber): UnixTimeResult {
   if (!parsed.isValid) {
-    const invalid = { local: 'Invalid', utc: 'Invalid' };
+    const invalid = { local: 'Invalid', utc: 'Invalid', isValid: false };
     return {
       seconds: invalid,
       milliseconds: invalid,
@@ -52,7 +53,7 @@ export function convertToUnixTime(parsed: ParsedNumber): UnixTimeResult {
     const numValue = Number(value);
 
     if (numValue > Number.MAX_SAFE_INTEGER || numValue < Number.MIN_SAFE_INTEGER) {
-      const invalid = { local: 'Out of range', utc: 'Out of range' };
+      const invalid = { local: 'Out of range', utc: 'Out of range', isValid: false };
       return {
         seconds: invalid,
         milliseconds: invalid,
@@ -61,26 +62,35 @@ export function convertToUnixTime(parsed: ParsedNumber): UnixTimeResult {
       };
     }
 
+    const secondsTimestamp = numValue * 1000;
+    const millisecondsTimestamp = numValue;
+    const microsecondsTimestamp = numValue / 1000;
+    const nanosecondsTimestamp = numValue / 1000000;
+
     return {
       seconds: {
-        local: formatDateTime(numValue * 1000, false),
-        utc: formatDateTime(numValue * 1000, true),
+        local: formatDateTime(secondsTimestamp, false),
+        utc: formatDateTime(secondsTimestamp, true),
+        isValid: isTimestampValid(secondsTimestamp),
       },
       milliseconds: {
-        local: formatDateTime(numValue, false),
-        utc: formatDateTime(numValue, true),
+        local: formatDateTime(millisecondsTimestamp, false),
+        utc: formatDateTime(millisecondsTimestamp, true),
+        isValid: isTimestampValid(millisecondsTimestamp),
       },
       microseconds: {
-        local: formatDateTime(numValue / 1000, false),
-        utc: formatDateTime(numValue / 1000, true),
+        local: formatDateTime(microsecondsTimestamp, false),
+        utc: formatDateTime(microsecondsTimestamp, true),
+        isValid: isTimestampValid(microsecondsTimestamp),
       },
       nanoseconds: {
-        local: formatDateTime(numValue / 1000000, false),
-        utc: formatDateTime(numValue / 1000000, true),
+        local: formatDateTime(nanosecondsTimestamp, false),
+        utc: formatDateTime(nanosecondsTimestamp, true),
+        isValid: isTimestampValid(nanosecondsTimestamp),
       },
     };
   } catch (error) {
-    const invalid = { local: 'Error', utc: 'Error' };
+    const invalid = { local: 'Error', utc: 'Error', isValid: false };
     return {
       seconds: invalid,
       milliseconds: invalid,

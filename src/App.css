@@ -162,6 +162,11 @@
   color: #ffffff;
 }
 
+.unix-input-value.invalid-timestamp,
+.unix-current-value.invalid-timestamp {
+  color: #888888;
+}
+
 .copyable-value {
   cursor: pointer;
   position: relative;
@@ -247,6 +252,11 @@
 
   .unix-current-value {
     color: #000000;
+  }
+
+  .unix-input-value.invalid-timestamp,
+  .unix-current-value.invalid-timestamp {
+    color: #888888;
   }
 
   .copy-toast {

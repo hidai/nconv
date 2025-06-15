@@ -33,43 +33,68 @@ export const UnixTimeTable = memo(function UnixTimeTable({ unixTime }: UnixTimeT
     }
   };
 
+
   return (
     <div className="result-group">
       <h3>Unix Time Interpretation</h3>
       <div className="result-row unix-time-row">
         <span className="result-label">seconds:</span>
         <div className="unix-time-values">
-          <CopyableValue value={unixTime.seconds.local} className="unix-input-value" />
+          <CopyableValue
+            value={unixTime.seconds.local}
+            className={`unix-input-value${!unixTime.seconds.isValid ? ' invalid-timestamp' : ''}`}
+          />
           <span className="unix-separator">|</span>
           <span className="unix-current-label">Now:</span>
-          <CopyableValue value={formatCurrentTime('seconds')} className="unix-current-value" />
+          <CopyableValue
+            value={formatCurrentTime('seconds')}
+            className="unix-current-value"
+          />
         </div>
       </div>
       <div className="result-row unix-time-row">
         <span className="result-label">milliseconds:</span>
         <div className="unix-time-values">
-          <CopyableValue value={unixTime.milliseconds.local} className="unix-input-value" />
+          <CopyableValue
+            value={unixTime.milliseconds.local}
+            className={`unix-input-value${!unixTime.milliseconds.isValid ? ' invalid-timestamp' : ''}`}
+          />
           <span className="unix-separator">|</span>
           <span className="unix-current-label">Now:</span>
-          <CopyableValue value={formatCurrentTime('milliseconds')} className="unix-current-value" />
+          <CopyableValue
+            value={formatCurrentTime('milliseconds')}
+            className="unix-current-value"
+          />
         </div>
       </div>
       <div className="result-row unix-time-row">
         <span className="result-label">microseconds:</span>
         <div className="unix-time-values">
-          <CopyableValue value={unixTime.microseconds.local} className="unix-input-value" />
+          <CopyableValue
+            value={unixTime.microseconds.local}
+            className={`unix-input-value${!unixTime.microseconds.isValid ? ' invalid-timestamp' : ''}`}
+          />
           <span className="unix-separator">|</span>
           <span className="unix-current-label">Now:</span>
-          <CopyableValue value={formatCurrentTime('microseconds')} className="unix-current-value" />
+          <CopyableValue
+            value={formatCurrentTime('microseconds')}
+            className="unix-current-value"
+          />
         </div>
       </div>
       <div className="result-row unix-time-row">
         <span className="result-label">nanoseconds:</span>
         <div className="unix-time-values">
-          <CopyableValue value={unixTime.nanoseconds.local} className="unix-input-value" />
+          <CopyableValue
+            value={unixTime.nanoseconds.local}
+            className={`unix-input-value${!unixTime.nanoseconds.isValid ? ' invalid-timestamp' : ''}`}
+          />
           <span className="unix-separator">|</span>
           <span className="unix-current-label">Now:</span>
-          <CopyableValue value={formatCurrentTime('nanoseconds')} className="unix-current-value" />
+          <CopyableValue
+            value={formatCurrentTime('nanoseconds')}
+            className="unix-current-value"
+          />
         </div>
       </div>
     </div>

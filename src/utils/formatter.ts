@@ -76,6 +76,17 @@ export function formatIEC(value: bigint): string {
   return formatWithSeparators(value);
 }
 
+export function isTimestampValid(timestamp: number): boolean {
+  const date = new Date(timestamp);
+
+  if (Number.isNaN(date.getTime())) {
+    return false;
+  }
+
+  const year = date.getFullYear();
+  return year >= 1971 && year <= 2100;
+}
+
 export function formatDateTime(timestamp: number, isUTC = false): string {
   const date = new Date(timestamp);
 
