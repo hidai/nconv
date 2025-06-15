@@ -13,7 +13,9 @@
       "Bash(npm install:*)",
       "Bash(rm:*)",
       "Bash(npm run check:*)",
-      "Bash(npm run format:*)"
+      "Bash(npm run format:*)",
+      "Bash(find:*)",
+      "Bash(npm audit:*)"
     ],
     "deny": []
   }

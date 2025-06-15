@@ -19,7 +19,8 @@ export const CopyableValue = memo(function CopyableValue({
       setShowCopied(true);
       setTimeout(() => setShowCopied(false), 2000);
     } catch (err) {
-      console.error('Failed to copy:', err);
+      // Silently handle copy failures in production
+      // Consider implementing proper error reporting if needed
     }
   };
 
