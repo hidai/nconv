@@ -6,10 +6,10 @@ interface CopyableValueProps {
   children?: React.ReactNode;
 }
 
-export const CopyableValue = memo(function CopyableValue({ 
-  value, 
-  className = '', 
-  children 
+export const CopyableValue = memo(function CopyableValue({
+  value,
+  className = '',
+  children,
 }: CopyableValueProps) {
   const [showCopied, setShowCopied] = useState(false);
 
@@ -25,11 +25,12 @@ export const CopyableValue = memo(function CopyableValue({
 
   return (
     <>
-      <span 
+      <span
         className={`copyable-value ${className}`}
         onClick={handleCopy}
-        role="button"
-        tabIndex={0}
+        {...{
+          tabIndex: 0,
+        }}
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
@@ -40,12 +41,8 @@ export const CopyableValue = memo(function CopyableValue({
       >
         {children || value}
       </span>
-      
-      {showCopied && (
-        <div className="copy-toast">
-          Copied!
-        </div>
-      )}
+
+      {showCopied && <div className="copy-toast">Copied!</div>}
     </>
   );
 });
