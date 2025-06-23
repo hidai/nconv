@@ -52,7 +52,9 @@ export function convertToUnixTime(parsed: ParsedNumber): UnixTimeResult {
   try {
     const numValue = Number(value);
 
-    if (numValue > Number.MAX_SAFE_INTEGER || numValue < Number.MIN_SAFE_INTEGER) {
+    // Skip MAX_SAFE_INTEGER check for very large values that might be nanosecond timestamps
+    // We'll handle precision loss in the conversion, but allow the calculation to proceed
+    if (numValue === Infinity || numValue === -Infinity || isNaN(numValue)) {
       const invalid = { local: 'Out of range', utc: 'Out of range', isValid: false };
       return {
         seconds: invalid,
@@ -115,7 +117,9 @@ export function convertToDuration(parsed: ParsedNumber): DurationResult {
   try {
     const numValue = Number(value);
 
-    if (numValue > Number.MAX_SAFE_INTEGER || numValue < Number.MIN_SAFE_INTEGER) {
+    // Skip MAX_SAFE_INTEGER check for very large values that might be nanosecond timestamps
+    // We'll handle precision loss in the conversion, but allow the calculation to proceed
+    if (numValue === Infinity || numValue === -Infinity || isNaN(numValue)) {
       return {
         seconds: 'Out of range',
         milliseconds: 'Out of range',

@@ -33,7 +33,6 @@ export const UnixTimeTable = memo(function UnixTimeTable({ unixTime }: UnixTimeT
     }
   };
 
-
   return (
     <div className="result-group">
       <h3>Unix Time Interpretation</h3>
@@ -46,10 +45,7 @@ export const UnixTimeTable = memo(function UnixTimeTable({ unixTime }: UnixTimeT
           />
           <span className="unix-separator">|</span>
           <span className="unix-current-label">Now:</span>
-          <CopyableValue
-            value={formatCurrentTime('seconds')}
-            className="unix-current-value"
-          />
+          <CopyableValue value={formatCurrentTime('seconds')} className="unix-current-value" />
         </div>
       </div>
       <div className="result-row unix-time-row">
@@ -61,10 +57,7 @@ export const UnixTimeTable = memo(function UnixTimeTable({ unixTime }: UnixTimeT
           />
           <span className="unix-separator">|</span>
           <span className="unix-current-label">Now:</span>
-          <CopyableValue
-            value={formatCurrentTime('milliseconds')}
-            className="unix-current-value"
-          />
+          <CopyableValue value={formatCurrentTime('milliseconds')} className="unix-current-value" />
         </div>
       </div>
       <div className="result-row unix-time-row">
@@ -76,10 +69,7 @@ export const UnixTimeTable = memo(function UnixTimeTable({ unixTime }: UnixTimeT
           />
           <span className="unix-separator">|</span>
           <span className="unix-current-label">Now:</span>
-          <CopyableValue
-            value={formatCurrentTime('microseconds')}
-            className="unix-current-value"
-          />
+          <CopyableValue value={formatCurrentTime('microseconds')} className="unix-current-value" />
         </div>
       </div>
       <div className="result-row unix-time-row">
@@ -91,10 +81,7 @@ export const UnixTimeTable = memo(function UnixTimeTable({ unixTime }: UnixTimeT
           />
           <span className="unix-separator">|</span>
           <span className="unix-current-label">Now:</span>
-          <CopyableValue
-            value={formatCurrentTime('nanoseconds')}
-            className="unix-current-value"
-          />
+          <CopyableValue value={formatCurrentTime('nanoseconds')} className="unix-current-value" />
         </div>
       </div>
     </div>
